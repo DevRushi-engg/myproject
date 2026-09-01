@@ -5,13 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Learing Github Action - CI/CD " > result.txt
-      - uses: action/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with: { name: result, path: result.txt }
   deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: action/download-artifcat@v4
+      - uses: actions/download-artifact@v4
         with: { name: result }
       - run: cat result.txt
 
