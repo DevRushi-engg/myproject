@@ -4,10 +4,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: mkdir -p dist && echo "hello" > dist/app.txt
-      - uses: actions/upload-artifact@v4
-        with:
-          name: app-build
-          path: dist/
+      - run: echo "Learing Github Action - CI/CD " > result.txt
+      - uses: action/upload-artifact@v4
+        with: { name: result, path: result.txt }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/download-artifcat@v4
+        with: { name: result }
+      - run: cat result.txt
 
