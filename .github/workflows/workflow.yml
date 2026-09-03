@@ -9,9 +9,10 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    if: github.ref == 'ref/heads/main'
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "Deploying to production"
+      - uses: actions/checkouts@v4
+      - run: echo "Deploying, because this is main"
 
       
     
